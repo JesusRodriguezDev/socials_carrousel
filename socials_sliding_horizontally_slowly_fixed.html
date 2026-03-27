@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* 1. THE RESOLUTION TRICK: 
+           We use zoom: 2.0 to render everything at 2x sharpness. 
+        */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: transparent; 
+            font-family: 'Kristen ITC';
+            zoom: 2.0; 
+            -moz-transform: scale(2.0); /* Firefox support */
+            -moz-transform-origin: 0 0;
+        }
+
+        /* 2. THE DIMENSIONS:
+           The container is 600px wide, but because of the 2x zoom, 
+           it will actually occupy 1200px of space in OBS.
+        */
+        .container {
+            width: 600px; 
+            height: 50px;
+            /* background: rgba(15, 15, 15, 0.9); */
+            /* backdrop-filter: blur(10px); */
+            /* -webkit-backdrop-filter: blur(10px); */
+            color: white;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            /* border: 1px solid rgba(255, 255, 255, 0.1); */
+            border-radius: 6px;
+        }
+
+        .ticker-wrapper {
+            display: flex;
+            width: max-content;
+            /* Change the seconds bellow to a lower number to make it scroll faster or to a higher number for it to be slower */
+            animation: continuous-scroll 25s linear infinite;
+            will-change: transform; /* Helps GPU rendering smoothness */
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            padding: 0 20px; /*change this number to reduce or increase the space between the usernames*/
+            font-size: 1.1rem;
+            font-weight: 700; /* Heavier weight looks cleaner when scaled */
+            white-space: nowrap;
+        }
+
+        .item i { 
+            margin-right: 10px; 
+            font-size: 1.3rem;
+        }
+
+        /* Brand Colors */
+        .fa-tiktok { color: #ff0050; }
+        .fa-instagram {
+            /* Instagram Brand Gradient */
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .fa-twitch { color: #a970ff; }
+        .fa-youtube { color: #ff0000; }
+
+        @keyframes continuous-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="ticker-wrapper">
+            <div class="item"><i class="fab fa-tiktok"></i> xerberuz_games</div>
+            <div class="item"><i class="fab fa-instagram"></i> xerberuz_games</div>
+            <div class="item"><i class="fab fa-twitch"></i> xerberuz_games</div>
+            <div class="item"><i class="fab fa-youtube"></i> xerberuz_games</div>
+            <div class="item"><i class="fab fa-tiktok"></i> xerberuz_games</div>
+            <div class="item"><i class="fab fa-instagram"></i> xerberuz_games</div>
+            <div class="item"><i class="fab fa-twitch"></i> xerberuz_games</div>
+            <div class="item"><i class="fab fa-youtube"></i> xerberuz_games</div>
+        </div>
+    </div>
+</body>
+</html>
